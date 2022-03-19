@@ -9,18 +9,15 @@ export const Wrapper = styled.div`
 export const Inner = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   margin: 9px;
-  cursor: pointer;
   position: relative;
   border-radius: 4px;
   box-shadow: none;
-  transition: box-shadow 0.25s ease 0s;
+  cursor: pointer;
 `;
 
 export const CardBox = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
-  cursor: pointer;
   border-radius: 4px;
-  transition: box-shadow 0.25s ease 0s;
   position: relative;
   width: 100%;
   overflow: hidden;
@@ -33,4 +30,22 @@ export const CardImage = styled.img`
   height: 100%;
   width: 100%;
   object-fit: cover;
+`;
+
+export const SelectedImage = styled.div`
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background-color: rgba(75, 79, 84, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s ease 0s;
+  &:hover {
+    opacity: 1;
+  }
 `;
