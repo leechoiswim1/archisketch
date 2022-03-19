@@ -1,6 +1,9 @@
 export interface CardImage {
-  _id: string;
+  id: number;
+  imageUrl: string;
 }
 export interface CardProps {
   item: CardImage;
+  modalOpenHandler: () => void;
+  changeItemHandler: (item: number) => void;
 }
