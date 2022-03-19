@@ -1,10 +1,5 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-  padding: 0px 32px 32px;
-  overflow: hidden scroll;
-  height: calc(100vh - 48px);
-`;
 export const Info = styled.div`
   width: 100%;
   height: 64px;
@@ -13,14 +8,15 @@ export const Info = styled.div`
   align-items: center;
   padding: 0px 12px;
   font-size: 14px;
-  color: rgb(153, 153, 153);
+  color: ${({ theme }) => theme.colors.fontGray};
+  box-sizing: border-box;
 `;
 
 export const Count = styled.span`
   flex: 1 1 0%;
   margin-right: auto;
   font-size: 14px;
-  color: rgb(102, 102, 102);
+  color: ${({ theme }) => theme.colors.gray};
   text-transform: lowercase;
 `;
 
@@ -32,7 +28,7 @@ export const Title = styled.span`
   font-weight: 700;
   line-height: 56px;
   text-transform: capitalize;
-  color: rgb(45, 50, 54);
+  color: ${({ theme }) => theme.colors.deepGray};
   user-select: none;
 `;
 
@@ -50,8 +46,8 @@ export const SelectWrap = styled.div`
 `;
 export const Select = styled.select`
   position: relative;
-  background-color: #fff;
-  border: 1px solid #d9e7e9;
+  background-color: ${({ theme }) => theme.colors.white};
+  border: 1px solid ${({ theme }) => theme.colors.borderGray};
   border-radius: 2px;
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   width: 100%;
