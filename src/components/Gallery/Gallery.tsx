@@ -1,30 +1,17 @@
-import React from 'react';
-import * as S from './Gellery.styled';
-
-const Gallery = () => {
+import React, { ReactElement } from 'react';
+import * as S from './Gallery.styled';
+import { GalleryInfo, Card } from 'components';
+import { GelleryProps } from './Gallery.type';
+const Gallery = ({ items }: GelleryProps): ReactElement => {
   return (
     <S.Wrapper>
-      <S.Info>
-        <S.Count>114개 랜더샷</S.Count> <S.Title>갤러리</S.Title>
-        <S.SelectGroup>
-          <S.SelectWrap>
-            <S.Select>
-              <option selected>모든 랜더샷</option>
-              <option>옵션1</option>
-              <option>옵션2</option>
-              <option>옵션3</option>
-            </S.Select>
-          </S.SelectWrap>
-          <S.SelectWrap>
-            <S.Select>
-              <option selected>모든화질</option>
-              <option>옵션1</option>
-              <option>옵션2</option>
-              <option>옵션3</option>
-            </S.Select>{' '}
-          </S.SelectWrap>
-        </S.SelectGroup>
-      </S.Info>
+      <GalleryInfo />
+      <S.CardWrapper>
+        {items &&
+          items.map(item => {
+            return <Card key={item._id} item={item} />;
+          })}
+      </S.CardWrapper>
     </S.Wrapper>
   );
 };
