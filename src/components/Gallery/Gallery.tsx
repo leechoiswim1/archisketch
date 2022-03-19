@@ -8,10 +8,10 @@ const Gallery = ({ items, modalOpenHandler, changeItemHandler }: GelleryProps): 
       <GalleryInfo />
       <S.CardWrapper>
         {items &&
-          items.map((item) => {
+          items.map(item => {
             return (
               <Card
-                key={item.id}
+                key={`item${item.id}`}
                 item={item}
                 changeItemHandler={changeItemHandler}
                 modalOpenHandler={modalOpenHandler}
