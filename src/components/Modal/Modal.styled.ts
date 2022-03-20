@@ -31,7 +31,7 @@ export const Button = styled.button<{ way: string }>`
   justify-content: center;
   align-items: center;
   font-size: 28px;
-  background: rgb(243, 244, 244);
+  background: ${({ theme }) => theme.colors.buttonColor};
   transition: all 0.32s ease 0s;
   cursor: pointer;
 `;
@@ -40,5 +40,5 @@ export const DetailImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: contain;
-  background: rgb(250, 250, 250);
+  background: ${({ theme }) => theme.colors.imageColor};
 `;

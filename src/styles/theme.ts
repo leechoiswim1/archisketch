@@ -6,6 +6,9 @@ const colors = {
   borderGray: '#d9e7e9',
   background: '#FFFEFF',
   borderColor: '#efeeef',
+  buttonColor: '#f3f4f4',
+  imageColor: '#fafafa',
+  blue: '#499fb6',
 };
 
 const theme = {
