@@ -34,6 +34,12 @@ export const Button = styled.button<{ way: string }>`
   background: ${({ theme }) => theme.colors.buttonColor};
   transition: all 0.32s ease 0s;
   cursor: pointer;
+  border: none;
+  box-sizing: border-box;
+  img {
+    width: 20px;
+    height: 20px;
+  }
 `;
 
 export const DetailImage = styled.img`

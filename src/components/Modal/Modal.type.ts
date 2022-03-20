@@ -3,4 +3,5 @@ export interface ModalProps {
   selectedItem?: number;
   selectedUrl: string;
   changeItemHandler: (item: number) => void;
+  deleteItem: (selectedItem: number) => void;
 }
