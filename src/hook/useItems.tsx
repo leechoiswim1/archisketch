@@ -22,7 +22,7 @@ const useItems = () => {
     setIsLoading(true);
     getItem();
   }, [getItem]);
-  return { items: items, isLoading: isLoading };
+  return { items: items, isLoading: isLoading, setItems: setItems };
 };
 
 export default useItems;
