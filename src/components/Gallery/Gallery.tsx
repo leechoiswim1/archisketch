@@ -5,7 +5,7 @@ import { GelleryProps } from './Gallery.type';
 const Gallery = ({ items, modalOpenHandler, changeItemHandler }: GelleryProps): ReactElement => {
   return (
     <S.Wrapper>
-      <GalleryInfo />
+      <GalleryInfo itemsLength={items.length} />
       <S.CardWrapper>
         {items &&
           items.map(item => {

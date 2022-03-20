@@ -1,9 +1,10 @@
 import React from 'react';
 import * as S from './GalleryInfo.styled';
-const GalleryInfo = () => {
+import { GallertInfoProps } from './GalleryInfo.type';
+const GalleryInfo = ({ itemsLength }: GallertInfoProps) => {
   return (
     <S.Info>
-      <S.Count>114개 랜더샷</S.Count> <S.Title>갤러리</S.Title>
+      <S.Count>{itemsLength}개 랜더샷</S.Count> <S.Title>갤러리</S.Title>
       <S.SelectGroup>
         <S.SelectWrap>
           <S.Select>
