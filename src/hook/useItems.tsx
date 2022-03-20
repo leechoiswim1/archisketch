@@ -1,19 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { ItemsType } from 'components/Gallery/Gallery.type';
 import { getData } from 'service/Api';
 const useItems = () => {
   const [items, setItems] = useState<ItemsType>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  useEffect(() => {
+  const getItem = useCallback(() => {
     getData().then(res => {
-      const data = res.renderings.map((item: { _id: string }, idx: number) => {
-        const card = { id: idx + 1, imageUrl: item._id };
-        return card;
-      });
-      setItems(data);
+      const data =
+        res &&
+        res.renderings.map((item: { _id: string }, idx: number) => {
+          const card = { id: idx + 1, imageUrl: item._id };
+          return card;
+        });
+      data && setItems(data);
+      setIsLoading(false);
     });
   }, []);
-  return items;
+
+  useEffect(() => {
+    setIsLoading(true);
+    getItem();
+  }, [getItem]);
+  return { items: items, isLoading: isLoading };
 };
 
 export default useItems;
