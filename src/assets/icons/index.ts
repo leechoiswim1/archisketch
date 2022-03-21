@@ -4,3 +4,6 @@ export { default as download } from './download.svg';
 export { default as tag } from './tag.svg';
 export { default as trash } from './trash.svg';
 export { default as x } from './x.svg';
+export { default as chevronDown } from './chevronDown.svg';
+export { default as moreHorizontal } from './moreHorizontal.svg';
+export { default as checkSign } from './checkSign.svg';
