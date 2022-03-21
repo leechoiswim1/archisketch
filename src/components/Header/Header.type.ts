@@ -1,6 +1,7 @@
 export type HeaderProps = {
-  modalCloseHandler?: () => void;
   path?: string;
   selectedItem?: number;
+  selectedUrl?: string;
   deleteItem?: (selectedItem: number) => void;
+  modalCloseHandler?: () => void;
 };

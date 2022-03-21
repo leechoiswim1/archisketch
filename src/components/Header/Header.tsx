@@ -2,8 +2,15 @@ import React from 'react';
 import * as S from './Header.styled';
 import { x, download, tag, trash } from 'assets/icons';
 import { HeaderProps } from './Header.type';
+import { fileDownloadHandler } from 'utils/fileDownloadHandler';
 
-const Header = ({ modalCloseHandler, path, selectedItem, deleteItem }: HeaderProps) => {
+const Header = ({
+  modalCloseHandler,
+  path,
+  selectedItem,
+  selectedUrl,
+  deleteItem,
+}: HeaderProps) => {
   if (!path) {
     return (
       <S.Header>
@@ -26,7 +33,11 @@ const Header = ({ modalCloseHandler, path, selectedItem, deleteItem }: HeaderPro
           <S.Button>
             <img src={tag} alt="tag" />
           </S.Button>
-          <S.Button>
+          <S.Button
+            onClick={() =>
+              selectedUrl && selectedItem && fileDownloadHandler(selectedUrl, selectedItem)
+            }
+          >
             <img src={download} alt="download" />
             <span>Download</span>
           </S.Button>
