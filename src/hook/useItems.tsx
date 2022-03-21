@@ -14,7 +14,7 @@ const useItems = () => {
           return card;
         });
       data && setItems(data);
-      setIsLoading(false);
+      data && setIsLoading(false);
     });
   }, []);
 
