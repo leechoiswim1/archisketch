@@ -7,7 +7,6 @@ const App = () => {
   const { items, isLoading, setItems } = useItems();
   const { selectedItem, changeItemHandler, selectedUrl } = useSelectedItem(items);
   const { modalState, modalOpenHandler, modalCloseHandler } = useModal();
-
   const deleteItem = (selectedItem: number) => {
     const result = items.filter(item => item.id !== selectedItem);
     setItems(result);
@@ -24,6 +23,7 @@ const App = () => {
           items={items}
           changeItemHandler={changeItemHandler}
           modalOpenHandler={modalOpenHandler}
+          deleteItem={deleteItem}
         />
         {modalState && selectedItem && (
           <Modal
