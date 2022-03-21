@@ -49,3 +49,33 @@ export const SelectedImage = styled.div`
     opacity: 1;
   }
 `;
+export const MenuIcon = styled.img`
+  position: absolute;
+  top: 15px;
+  right: 15px;
+`;
+
+export const MenuWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
+export const Menu = styled.li`
+  width: 50px;
+  height: 25px;
+  font-size: 10px;
+  padding: 5px;
+  box-sizing: border-box;
+`;
+
+export const Menus = styled.ul`
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  list-style: none;
+  width: 50px;
+  height: 50px;
+  padding: 0px;
+  background: ${({ theme }) => theme.colors.white};
+`;
