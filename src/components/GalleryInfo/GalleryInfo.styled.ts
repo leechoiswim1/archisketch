@@ -39,18 +39,3 @@ export const SelectGroup = styled.section`
   display: flex;
   justify-content: flex-end;
 `;
-
-export const SelectWrap = styled.div`
-  margin-left: 8px;
-  width: 134px;
-`;
-export const Select = styled.select`
-  position: relative;
-  background-color: ${({ theme }) => theme.colors.white};
-  border: 1px solid ${({ theme }) => theme.colors.borderGray};
-  border-radius: 2px;
-  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  width: 100%;
-  height: 32px;
-  padding: 0 11px;
-`;
