@@ -21,6 +21,7 @@ const Modal = ({
         modalCloseHandler={modalCloseHandler}
         path="modal"
         selectedItem={selectedItem}
+        selectedUrl={selectedUrl}
         deleteItem={deleteItem}
       />
       <S.ModalDetail>
