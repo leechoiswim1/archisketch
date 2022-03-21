@@ -6,4 +6,5 @@ export type GelleryProps = {
   items: ItemsType;
   modalOpenHandler: () => void;
   changeItemHandler: (item: number) => void;
+  deleteItem: (item: number) => void;
 };

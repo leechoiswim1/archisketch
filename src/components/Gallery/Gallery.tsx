@@ -2,7 +2,14 @@ import React, { ReactElement } from 'react';
 import * as S from './Gallery.styled';
 import { GalleryInfo, Card } from 'components';
 import { GelleryProps } from './Gallery.type';
-const Gallery = ({ items, modalOpenHandler, changeItemHandler }: GelleryProps): ReactElement => {
+import { useCheckItem } from 'hook';
+const Gallery = ({
+  items,
+  modalOpenHandler,
+  changeItemHandler,
+  deleteItem,
+}: GelleryProps): ReactElement => {
+  const { checkItems, checkItemHandler } = useCheckItem();
   return (
     <S.Wrapper>
       <GalleryInfo itemsLength={items.length} />
@@ -13,8 +20,11 @@ const Gallery = ({ items, modalOpenHandler, changeItemHandler }: GelleryProps): 
               <Card
                 key={`item${item.id}`}
                 item={item}
+                checkItems={checkItems}
+                deleteItem={deleteItem}
                 changeItemHandler={changeItemHandler}
                 modalOpenHandler={modalOpenHandler}
+                checkItemHandler={checkItemHandler}
               />
             );
           })}
