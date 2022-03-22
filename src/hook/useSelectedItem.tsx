@@ -8,25 +8,16 @@ const useSelectedItem = (items: ItemsType) => {
 
   const changeItemHandler = useCallback(
     (item: number) => {
-      if (items.length < item || item < 1) {
-        return;
-      }
       setSelectedItem(item);
     },
-    [items.length, setSelectedItem],
+    [setSelectedItem],
   );
 
   useEffect(() => {
     if (selectedItem && items) {
       const idx = items.findIndex((item: CardImage) => item.id === selectedItem);
-      if (idx === -1) {
-        const idx = items.findIndex((item: CardImage) => item.id === selectedItem - 1);
-        const imageUrl = items[idx].imageUrl;
-        setSelectedUrl(imageUrl);
-      } else {
-        const imageUrl = items[idx].imageUrl;
-        setSelectedUrl(imageUrl);
-      }
+      const imageUrl = items[idx].imageUrl;
+      setSelectedUrl(imageUrl);
     }
   }, [selectedItem, items]);
 

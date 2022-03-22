@@ -5,6 +5,8 @@ import { ModalProps } from './Modal.type';
 import ArrowRight from 'assets/icons/arrowRight.svg';
 import ArrowLeft from 'assets/icons/arrowLeft.svg';
 const Modal = ({
+  prevItem,
+  nextItem,
   modalCloseHandler,
   selectedItem,
   selectedUrl,
@@ -12,7 +14,8 @@ const Modal = ({
   deleteItem,
 }: ModalProps) => {
   const imageChangeHandler = (way: string) => {
-    selectedItem && changeItemHandler(way === 'next' ? selectedItem + 1 : selectedItem - 1);
+    selectedItem &&
+      changeItemHandler(way === 'next' ? nextItem(selectedItem) : prevItem(selectedItem));
   };
 
   return (

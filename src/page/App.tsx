@@ -4,13 +4,13 @@ import * as S from './App.styled';
 import { useItems, useSelectedItem, useModal } from 'hook';
 
 const App = () => {
-  const { items, isLoading, setItems } = useItems();
+  const { items, isLoading, setItems, nextItem, prevItem } = useItems();
   const { selectedItem, changeItemHandler, selectedUrl } = useSelectedItem(items);
   const { modalState, modalOpenHandler, modalCloseHandler } = useModal();
   const deleteItem = (selectedItem: number) => {
     const result = items.filter(item => item.id !== selectedItem);
     setItems(result);
-    changeItemHandler(selectedItem + 1);
+    changeItemHandler(nextItem(selectedItem));
   };
 
   if (isLoading) {
@@ -27,6 +27,8 @@ const App = () => {
         />
         {modalState && selectedItem && (
           <Modal
+            prevItem={prevItem}
+            nextItem={nextItem}
             deleteItem={deleteItem}
             modalCloseHandler={modalCloseHandler}
             selectedUrl={selectedUrl}

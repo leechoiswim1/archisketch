@@ -18,11 +18,21 @@ const useItems = () => {
     });
   }, []);
 
+  const prevItem = (selectedItem: number) => {
+    const currentId = items.findIndex(item => item.id === selectedItem);
+    return currentId - 1 > 0 ? items[currentId - 1].id : items[items.length - 1].id;
+  };
+
+  const nextItem = (selectedItem: number) => {
+    const currentId = items.findIndex(item => item.id === selectedItem);
+    return currentId + 1 > items.length - 1 ? items[0].id : items[currentId + 1].id;
+  };
+
   useEffect(() => {
     setIsLoading(true);
     getItem();
   }, [getItem]);
-  return { items: items, isLoading: isLoading, setItems: setItems };
+  return { items: items, isLoading: isLoading, setItems: setItems, prevItem, nextItem };
 };
 
 export default useItems;
