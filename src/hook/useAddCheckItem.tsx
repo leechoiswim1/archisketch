@@ -11,7 +11,17 @@ const useAddCheckItem = () => {
     },
     [checkItems],
   );
-  return { checkItems: checkItems, checkItemHandler: checkItemHandler };
+  const checkAllItemsHandler = useCallback(
+    (items: number[]) => {
+      checkItems.length === items.length ? setCheckItems([]) : setCheckItems([...items]);
+    },
+    [checkItems],
+  );
+  return {
+    checkItems: checkItems,
+    checkItemHandler: checkItemHandler,
+    checkAllItemsHandler: checkAllItemsHandler,
+  };
 };
 
 export default useAddCheckItem;

@@ -1,7 +1,9 @@
 export interface CheckBoxProps {
   checked: boolean;
-  menuFalseHandler: () => void;
-  menuTrueHandler: () => void;
-  checkItemHandler: (item: number) => void;
-  id: number;
+  idList?: number[];
+  id?: number;
+  checkAllItemsHandler?: (item: number[]) => void;
+  checkItemHandler?: (item: number) => void;
+  menuFalseHandler?: () => void;
+  menuTrueHandler?: () => void;
 }

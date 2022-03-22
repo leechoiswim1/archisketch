@@ -5,16 +5,23 @@ const CheckBox = ({
   menuTrueHandler,
   menuFalseHandler,
   checkItemHandler,
+  checkAllItemsHandler,
   id,
+  idList,
   checked,
 }: CheckBoxProps): ReactElement => {
   return (
     <S.CheckBox
       type="checkbox"
       checked={checked}
+      galleryInfo={idList ? true : false}
       onMouseEnter={menuTrueHandler}
       onMouseLeave={menuFalseHandler}
-      onChange={() => id && checkItemHandler && checkItemHandler(id)}
+      onChange={() =>
+        id && checkItemHandler
+          ? checkItemHandler(id)
+          : idList && checkAllItemsHandler && checkAllItemsHandler(idList)
+      }
     />
   );
 };

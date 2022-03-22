@@ -1,3 +1,6 @@
+import { ItemsType } from 'components/Gallery/Gallery.type';
 export type GallertInfoProps = {
-  itemsLength: number;
+  items: ItemsType;
+  checkItems: number[];
+  checkAllItemsHandler: (items: number[]) => void;
 };

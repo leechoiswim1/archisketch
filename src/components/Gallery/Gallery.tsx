@@ -11,7 +11,7 @@ const Gallery = ({
   changeItemHandler,
   deleteItem,
 }: GelleryProps): ReactElement => {
-  const { checkItems, checkItemHandler } = useAddCheckItem();
+  const { checkItems, checkItemHandler, checkAllItemsHandler } = useAddCheckItem();
   const { cardPopupItem, cardPopupState, popUpHandler } = usePopup();
 
   const ItemCard = React.memo(({ item }: { item: CardImage }) => (
@@ -37,7 +37,11 @@ const Gallery = ({
   ));
   return (
     <S.Wrapper>
-      <GalleryInfo itemsLength={items.length} />
+      <GalleryInfo
+        items={items}
+        checkItems={checkItems}
+        checkAllItemsHandler={checkAllItemsHandler}
+      />
       <S.CardWrapper>
         {items &&
           items.map(item => {

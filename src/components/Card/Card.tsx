@@ -33,7 +33,7 @@ const Card = ({
       <S.Inner>
         <S.CardBox>
           <S.CardImage src={item.imageUrl} alt={item.imageUrl} />
-          <S.SelectedImage>
+          <S.SelectedImage checked={checked}>
             <CheckBox
               id={item.id}
               checked={checked}
