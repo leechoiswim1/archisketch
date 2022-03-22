@@ -31,7 +31,7 @@ export const CardImage = styled.img`
   object-fit: cover;
 `;
 
-export const SelectedImage = styled.div`
+export const SelectedImage = styled.div<{ checked: boolean }>`
   position: absolute;
   left: 0px;
   top: 0px;
@@ -42,7 +42,7 @@ export const SelectedImage = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
+  opacity: ${props => (props.checked ? 1 : 0)};
   transition: opacity 0.25s ease 0s;
   &:hover {
     opacity: 1;

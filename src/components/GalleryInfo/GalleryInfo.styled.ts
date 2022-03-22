@@ -13,11 +13,8 @@ export const Info = styled.div`
 `;
 
 export const Count = styled.span`
-  flex: 1 1 0%;
-  margin-right: auto;
   font-size: 14px;
   color: ${({ theme }) => theme.colors.gray};
-  text-transform: lowercase;
 `;
 
 export const Title = styled.span`
@@ -38,4 +35,25 @@ export const SelectGroup = styled.section`
   flex: 1 1 0%;
   display: flex;
   justify-content: flex-end;
+`;
+
+export const GalleryLeft = styled.div`
+  position: relative;
+  flex: 1 1 0%;
+  margin-right: auto;
+  display: block;
+  @media (min-width: 768px) {
+    display: flex;
+  }
+`;
+
+export const CheckBoxGroup = styled.div`
+  margin-top: 5px;
+  span {
+    font-weight: 12px;
+    margin-left: 20px;
+  }
+  @media (min-width: 768px) {
+    margin: auto 5px;
+  }
 `;

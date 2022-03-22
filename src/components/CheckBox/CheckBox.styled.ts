@@ -1,18 +1,18 @@
 import styled from 'styled-components/macro';
 import { checkSign } from 'assets/icons';
 
-export const CheckBox = styled.input<{ checked: boolean }>`
+export const CheckBox = styled.input<{ checked: boolean; galleryInfo: boolean }>`
   position: absolute;
   width: 15px;
   height: 15px;
-  left: 15px;
-  top: 15px;
+  ${props => !props.galleryInfo && 'top: 15px'};
+  ${props => !props.galleryInfo && 'left: 15px'};
   cursor: pointer;
   &:before {
     content: '';
     position: absolute;
-    top: -2px;
-    left: -2px;
+    ${props => !props.galleryInfo && 'top: -2px'};
+    ${props => !props.galleryInfo && 'left: -2px'};
     width: inherit;
     height: inherit;
     border: 2px solid

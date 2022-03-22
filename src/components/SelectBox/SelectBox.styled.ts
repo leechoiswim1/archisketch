@@ -10,11 +10,16 @@ export const SelectInner = styled.form`
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   width: 100%;
   height: 32px;
-  padding: 0 11px;
+  padding: 0 3px;
+  font-size: 12px;
   :focus-within {
     img {
       transform: rotate(180deg);
     }
+  }
+  @media (min-width: 768px) {
+    font-size: 14px;
+    padding: 0 11px;
   }
 `;
 
@@ -37,7 +42,7 @@ export const ArrowIcon = styled.span`
   top: 0;
   right: 0;
   z-index: 1;
-  width: 35px;
+  width: 20px;
   height: inherit;
   display: flex;
   justify-content: center;
@@ -48,8 +53,15 @@ export const ArrowIcon = styled.span`
     height: 15px;
     transition: 0.3s;
   }
+  @media (min-width: 768px) {
+    width: 35px;
+  }
 `;
 export const SelectWrap = styled.div`
   margin-left: 8px;
-  width: 134px;
+  width: 50%;
+  min-width: 80px;
+  @media (min-width: 768px) {
+    width: 134px;
+  }
 `;
