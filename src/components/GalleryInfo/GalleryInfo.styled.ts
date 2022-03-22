@@ -57,3 +57,37 @@ export const CheckBoxGroup = styled.div`
     margin: auto 5px;
   }
 `;
+export const Button = styled.button`
+  height: 32px;
+  padding: 0px 5px;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  margin-right: 2px;
+  align-items: center;
+  border: 1px solid ${({ theme }) => theme.colors.borderColor};
+  background: none;
+
+  :last-child {
+    margin-right: 0px;
+  }
+  img {
+    width: 18px;
+    height: 18px;
+  }
+  span {
+    word-break: keep-all;
+    line-height: 18px;
+    float: right;
+    font-size: 10px;
+    font-weight: 500;
+    color: ${({ theme }) => theme.colors.buttonFont};
+  }
+  @media (min-width: 768px) {
+    margin-right: 8px;
+    padding: 0px 10px;
+    span {
+      font-size: 14px;
+    }
+  }
+`;

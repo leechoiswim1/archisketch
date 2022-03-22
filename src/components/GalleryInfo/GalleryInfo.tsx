@@ -3,8 +3,22 @@ import * as S from './GalleryInfo.styled';
 import { GallertInfoProps } from './GalleryInfo.type';
 import { SelectBox, CheckBox } from 'components';
 import { RENDER_OPTIONS, IMAGE_QUALITY_OPTIONS } from 'constants/constants';
-const GalleryInfo = ({ items, checkItems, checkAllItemsHandler }: GallertInfoProps) => {
+import { download, trash } from 'assets/icons';
+import fileDownloadHandler from 'utils/fileDownloadHandler';
+const GalleryInfo = ({
+  items,
+  checkItems,
+  checkAllItemsHandler,
+  deleteAllItems,
+}: GallertInfoProps) => {
   const idList = items.map(items => items.id);
+
+  const checkUrls = () => {
+    checkItems
+      .map(checkItem => items.findIndex(item => item.id === checkItem))
+      .map(index => ({ id: items[index].id, imageUrl: items[index].imageUrl }))
+      .forEach(item => fileDownloadHandler(item.imageUrl, item.id));
+  };
   return (
     <S.Info>
       <S.GalleryLeft>
@@ -21,10 +35,24 @@ const GalleryInfo = ({ items, checkItems, checkAllItemsHandler }: GallertInfoPro
         )}
       </S.GalleryLeft>
       <S.Title>갤러리</S.Title>
-      <S.SelectGroup>
-        <SelectBox options={RENDER_OPTIONS} />
-        <SelectBox options={IMAGE_QUALITY_OPTIONS} />
-      </S.SelectGroup>
+      {checkItems.length > 0 ? (
+        <S.SelectGroup>
+          <S.Button onClick={checkUrls}>
+            <img src={download} alt="download" />
+          </S.Button>
+          <S.Button onClick={deleteAllItems}>
+            <img src={trash} alt="trash" />
+          </S.Button>
+          <S.Button onClick={() => checkAllItemsHandler([])}>
+            <span>선택 취소</span>
+          </S.Button>
+        </S.SelectGroup>
+      ) : (
+        <S.SelectGroup>
+          <SelectBox options={RENDER_OPTIONS} />
+          <SelectBox options={IMAGE_QUALITY_OPTIONS} />
+        </S.SelectGroup>
+      )}
     </S.Info>
   );
 };

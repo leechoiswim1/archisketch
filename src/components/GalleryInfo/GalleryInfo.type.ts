@@ -3,4 +3,5 @@ export type GallertInfoProps = {
   items: ItemsType;
   checkItems: number[];
   checkAllItemsHandler: (items: number[]) => void;
+  deleteAllItems: () => void;
 };
