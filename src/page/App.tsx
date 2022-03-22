@@ -24,6 +24,7 @@ const App = () => {
       <S.Wrapper>
         <Header />
         <Gallery
+          setItems={setItems}
           items={items}
           changeItemHandler={changeItemHandler}
           modalOpenHandler={modalOpenHandler}
