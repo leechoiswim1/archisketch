@@ -17,6 +17,7 @@ const CheckBox = ({
       galleryInfo={idList ? true : false}
       onMouseEnter={menuTrueHandler}
       onMouseLeave={menuFalseHandler}
+      onMouseOver={menuTrueHandler}
       onChange={() =>
         id && checkItemHandler
           ? checkItemHandler(id)
