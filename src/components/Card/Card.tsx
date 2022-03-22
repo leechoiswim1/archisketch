@@ -4,6 +4,7 @@ import { CardProps } from './Card.type';
 import CheckBox from 'components/CheckBox/CheckBox';
 import { moreHorizontal } from 'assets/icons';
 import { fileDownloadHandler } from 'utils/fileDownloadHandler';
+import { useCheckItem } from 'hook';
 
 const Card = ({
   checkItems,
@@ -13,13 +14,14 @@ const Card = ({
   checkItemHandler,
   deleteItem,
 }: CardProps) => {
+  const id = item.id;
+  const checked = useCheckItem({ checkItems, id });
   const [isMenu, setIsMenu] = useState(false);
-  const [checked, setChecked] = useState(false);
   const [cardMenu, setCardMenu] = useState(false);
   const cardClickHandler = () => {
     if (!isMenu) {
       modalOpenHandler();
-      changeItemHandler(item.id);
+      changeItemHandler(id);
     }
   };
 
@@ -29,14 +31,6 @@ const Card = ({
   const menuFalseHandler = () => {
     setIsMenu(false);
   };
-  useEffect(() => {
-    const idx = checkItems.findIndex(chekedItem => chekedItem === item.id);
-    if (idx === -1) {
-      setChecked(false);
-    } else {
-      setChecked(true);
-    }
-  }, [checkItems]);
 
   return (
     <S.Wrapper onClick={cardClickHandler}>

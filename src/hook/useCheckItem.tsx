@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const useCheckItem = () => {
-  const [checkItems, setCheckItems] = useState<number[]>([]);
-  console.log(checkItems);
-  const checkItemHandler = (item: number) => {
-    setCheckItems([...checkItems, item]);
-  };
-  return { checkItems: checkItems, checkItemHandler: checkItemHandler };
+type checkItemProps = {
+  checkItems: number[];
+  id: number;
+};
+
+const useCheckItem = ({ checkItems, id }: checkItemProps) => {
+  const [checked, setChecked] = useState(false);
+  useEffect(() => {
+    const idx = checkItems.findIndex(chekedItem => chekedItem === id);
+    if (idx === -1) {
+      setChecked(false);
+    } else {
+      setChecked(true);
+    }
+  }, [checkItems, id]);
+  return checked;
 };
 
 export default useCheckItem;
