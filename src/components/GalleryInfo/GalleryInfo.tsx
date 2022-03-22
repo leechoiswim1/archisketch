@@ -15,4 +15,4 @@ const GalleryInfo = ({ itemsLength }: GallertInfoProps) => {
   );
 };
 
-export default GalleryInfo;
+export default React.memo(GalleryInfo);
