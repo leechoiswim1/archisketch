@@ -19,6 +19,7 @@ export const CardPopup = styled.ul`
   list-style: none;
   width: 60px;
   height: 50px;
+  z-index: 9999;
   background: ${({ theme }) => theme.colors.white};
   box-shadow: 0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%),
     0 9px 28px 8px rgb(0 0 0 / 5%);
@@ -40,11 +41,24 @@ export const Menu = styled.li`
 `;
 
 export const PopupOverlay = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
+  bottom: 0;
+  right: 0;
   background: none;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
+`;
+
+export const PopupWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+`;
+
+export const CardInner = styled.div`
+  flex: 0 1 25%;
+  width: 25%;
+  position: relative;
 `;

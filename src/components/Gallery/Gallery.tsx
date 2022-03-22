@@ -3,6 +3,7 @@ import * as S from './Gallery.styled';
 import { GalleryInfo, Card } from 'components';
 import { GelleryProps } from './Gallery.type';
 import { useAddCheckItem, usePopup } from 'hook';
+import { fileDownloadHandler } from 'utils/fileDownloadHandler';
 const Gallery = ({
   items,
   modalOpenHandler,
@@ -18,22 +19,30 @@ const Gallery = ({
         {items &&
           items.map(item => {
             return (
-              <Card
-                key={`item${item.id}`}
-                item={item}
-                cardPopupItem={cardPopupItem}
-                cardPopupState={cardPopupState}
-                popUpHandler={popUpHandler}
-                checked={checkItems.includes(item.id)}
-                deleteItem={deleteItem}
-                changeItemHandler={changeItemHandler}
-                modalOpenHandler={modalOpenHandler}
-                checkItemHandler={checkItemHandler}
-              />
+              <S.CardInner key={`item${item.id}`}>
+                <Card
+                  item={item}
+                  popUpHandler={popUpHandler}
+                  checked={checkItems.includes(item.id)}
+                  changeItemHandler={changeItemHandler}
+                  modalOpenHandler={modalOpenHandler}
+                  checkItemHandler={checkItemHandler}
+                />
+                {cardPopupItem === item.id && cardPopupState && (
+                  <S.PopupWrapper>
+                    <S.PopupOverlay onClick={() => popUpHandler(0)} />
+                    <S.CardPopup id="popUp">
+                      <S.Menu onClick={() => fileDownloadHandler(item.imageUrl, item.id)}>
+                        다운로드
+                      </S.Menu>
+                      <S.Menu onClick={() => deleteItem(item.id)}> 삭제</S.Menu>
+                    </S.CardPopup>
+                  </S.PopupWrapper>
+                )}
+              </S.CardInner>
             );
           })}
       </S.CardWrapper>
-      {cardPopupState && <S.PopupOverlay onClick={() => popUpHandler(0)} />}
     </S.Wrapper>
   );
 };

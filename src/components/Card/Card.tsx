@@ -3,7 +3,6 @@ import * as S from './Card.styled';
 import { CardProps } from './Card.type';
 import CheckBox from 'components/CheckBox/CheckBox';
 import { moreHorizontal } from 'assets/icons';
-import { fileDownloadHandler } from 'utils/fileDownloadHandler';
 
 const Card = ({
   checked,
@@ -11,15 +10,10 @@ const Card = ({
   modalOpenHandler,
   changeItemHandler,
   checkItemHandler,
-  deleteItem,
-  cardPopupItem,
-  cardPopupState,
   popUpHandler,
 }: CardProps) => {
   const id = item.id;
-
   const [isMenu, setIsMenu] = useState(false);
-
   const cardClickHandler = useCallback(() => {
     if (!isMenu) {
       modalOpenHandler();
@@ -47,7 +41,6 @@ const Card = ({
               menuFalseHandler={menuFalseHandler}
               checkItemHandler={checkItemHandler}
             />
-
             <S.MenuIcon
               onMouseEnter={menuTrueHandler}
               onMouseLeave={menuFalseHandler}
@@ -58,14 +51,8 @@ const Card = ({
           </S.SelectedImage>
         </S.CardBox>
       </S.Inner>
-      {cardPopupItem === item.id && cardPopupState && (
-        <S.CardPopup onMouseEnter={menuTrueHandler} onMouseLeave={menuFalseHandler} id="popUp">
-          <S.Menu onClick={() => fileDownloadHandler(item.imageUrl, item.id)}>다운로드</S.Menu>
-          <S.Menu onClick={() => deleteItem(item.id)}> 삭제</S.Menu>
-        </S.CardPopup>
-      )}
     </S.Wrapper>
   );
 };
 
-export default Card;
+export default React.memo(Card);

@@ -8,8 +8,5 @@ export type CardProps = {
   modalOpenHandler: () => void;
   changeItemHandler: (item: number) => void;
   checkItemHandler: (item: number) => void;
-  deleteItem: (item: number) => void;
-  cardPopupItem: number;
-  cardPopupState: boolean;
   popUpHandler: (id: number) => void;
 };

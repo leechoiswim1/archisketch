@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  flex: 0 1 25%;
-  width: 25%;
-  position: relative;
+  width: 100%;
+  height: 100%;
 `;
 
 export const Inner = styled.div`
@@ -53,32 +52,4 @@ export const MenuIcon = styled.img`
   position: absolute;
   top: 15px;
   right: 15px;
-`;
-
-export const CardPopup = styled.ul`
-  position: absolute;
-  top: 30px;
-  right: 15px;
-  list-style: none;
-  width: 60px;
-  height: 50px;
-  background: ${({ theme }) => theme.colors.white};
-  box-shadow: 0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%),
-    0 9px 28px 8px rgb(0 0 0 / 5%);
-  border-radius: 2px;
-  padding: 4px 0;
-  outline: none;
-  z-index: 9999;
-  color: ${({ theme }) => theme.colors.fontColor};
-  :hover {
-    background: ${({ theme }) => theme.colors.buttonColor};
-  }
-`;
-export const Menu = styled.li`
-  width: 60px;
-  height: 25px;
-  font-size: 10px;
-  padding: 5px;
-  box-sizing: border-box;
-  cursor: pointer;
 `;
