@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 const usePopup = () => {
   const [cardPopupItem, setCardPopupItem] = useState(0);
   const [cardPopupState, setCardPopupState] = useState(false);
-  const popUpHandler = (id: number) => {
-    setCardPopupItem(id);
-    setCardPopupState(!cardPopupState);
-  };
+  const popUpHandler = useCallback(
+    (id: number) => {
+      setCardPopupItem(id);
+      setCardPopupState(!cardPopupState);
+    },
+    [cardPopupItem],
+  );
 
   return {
     cardPopupItem: cardPopupItem,

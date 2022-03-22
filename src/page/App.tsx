@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Header, Gallery, Modal, Spinner } from 'components';
 import * as S from './App.styled';
 import { useItems, useSelectedItem, useModal } from 'hook';
@@ -7,11 +7,15 @@ const App = () => {
   const { items, isLoading, setItems, nextItem, prevItem } = useItems();
   const { selectedItem, changeItemHandler, selectedUrl } = useSelectedItem(items);
   const { modalState, modalOpenHandler, modalCloseHandler } = useModal();
-  const deleteItem = (selectedItem: number) => {
-    const result = items.filter(item => item.id !== selectedItem);
-    setItems(result);
-    changeItemHandler(nextItem(selectedItem));
-  };
+
+  const deleteItem = useCallback(
+    (selectedItem: number) => {
+      const result = items.filter(item => item.id !== selectedItem);
+      setItems(result);
+      changeItemHandler(nextItem(selectedItem));
+    },
+    [items],
+  );
 
   if (isLoading) {
     return <Spinner />;
