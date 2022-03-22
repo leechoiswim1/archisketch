@@ -2,7 +2,7 @@ import React from 'react';
 import * as S from './Header.styled';
 import { x, download, tag, trash } from 'assets/icons';
 import { HeaderProps } from './Header.type';
-import { fileDownloadHandler } from 'utils/fileDownloadHandler';
+import fileDownloadHandler from 'utils/fileDownloadHandler';
 
 const Header = ({
   modalCloseHandler,
