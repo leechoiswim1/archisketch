@@ -39,7 +39,7 @@ export const SelectedImage = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 4px;
-  background-color: rgba(75, 79, 84, 0.7);
+  background-color: ${({ theme }) => theme.colors.backgroundHover};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,27 +55,30 @@ export const MenuIcon = styled.img`
   right: 15px;
 `;
 
-export const MenuWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+export const CardPopup = styled.ul`
+  position: absolute;
+  top: 30px;
+  right: 15px;
+  list-style: none;
+  width: 60px;
+  height: 50px;
+  background: ${({ theme }) => theme.colors.white};
+  box-shadow: 0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%),
+    0 9px 28px 8px rgb(0 0 0 / 5%);
+  border-radius: 2px;
+  padding: 4px 0;
+  outline: none;
+  z-index: 9999;
+  color: ${({ theme }) => theme.colors.fontColor};
+  :hover {
+    background: ${({ theme }) => theme.colors.buttonColor};
+  }
 `;
 export const Menu = styled.li`
-  width: 50px;
+  width: 60px;
   height: 25px;
   font-size: 10px;
   padding: 5px;
   box-sizing: border-box;
-`;
-
-export const Menus = styled.ul`
-  position: absolute;
-  top: 15px;
-  right: 15px;
-
-  list-style: none;
-  width: 50px;
-  height: 50px;
-  padding: 0px;
-  background: ${({ theme }) => theme.colors.white};
+  cursor: pointer;
 `;

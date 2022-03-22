@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import * as S from './Card.styled';
 import { CardProps } from './Card.type';
 import CheckBox from 'components/CheckBox/CheckBox';
@@ -13,24 +13,27 @@ const Card = ({
   changeItemHandler,
   checkItemHandler,
   deleteItem,
+  cardPopupItem,
+  cardPopupState,
+  popUpHandler,
 }: CardProps) => {
   const id = item.id;
   const checked = useCheckItem({ checkItems, id });
   const [isMenu, setIsMenu] = useState(false);
-  const [cardMenu, setCardMenu] = useState(false);
-  const cardClickHandler = () => {
+
+  const cardClickHandler = useCallback(() => {
     if (!isMenu) {
       modalOpenHandler();
       changeItemHandler(id);
     }
-  };
+  }, [isMenu, changeItemHandler, modalOpenHandler, id]);
 
-  const menuTrueHandler = () => {
+  const menuTrueHandler = useCallback(() => {
     setIsMenu(true);
-  };
-  const menuFalseHandler = () => {
+  }, []);
+  const menuFalseHandler = useCallback(() => {
     setIsMenu(false);
-  };
+  }, []);
 
   return (
     <S.Wrapper onClick={cardClickHandler}>
@@ -45,28 +48,23 @@ const Card = ({
               menuFalseHandler={menuFalseHandler}
               checkItemHandler={checkItemHandler}
             />
-            <S.MenuWrapper>
-              <S.MenuIcon
-                onMouseEnter={menuTrueHandler}
-                onMouseLeave={menuFalseHandler}
-                src={moreHorizontal}
-                alt="moreHorizontal"
-                onClick={() => {
-                  setCardMenu(!cardMenu);
-                }}
-              />
-              {cardMenu && (
-                <S.Menus onMouseEnter={menuTrueHandler} onMouseLeave={menuFalseHandler}>
-                  <S.Menu onClick={() => fileDownloadHandler(item.imageUrl, item.id)}>
-                    다운로드
-                  </S.Menu>
-                  <S.Menu onClick={() => deleteItem(item.id)}> 삭제</S.Menu>
-                </S.Menus>
-              )}
-            </S.MenuWrapper>
+
+            <S.MenuIcon
+              onMouseEnter={menuTrueHandler}
+              onMouseLeave={menuFalseHandler}
+              src={moreHorizontal}
+              alt="moreHorizontal"
+              onClick={() => popUpHandler(item.id)}
+            />
           </S.SelectedImage>
         </S.CardBox>
       </S.Inner>
+      {cardPopupItem === item.id && cardPopupState && (
+        <S.CardPopup onMouseEnter={menuTrueHandler} onMouseLeave={menuFalseHandler} id="popUp">
+          <S.Menu onClick={() => fileDownloadHandler(item.imageUrl, item.id)}>다운로드</S.Menu>
+          <S.Menu onClick={() => deleteItem(item.id)}> 삭제</S.Menu>
+        </S.CardPopup>
+      )}
     </S.Wrapper>
   );
 };

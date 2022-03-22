@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import * as S from './Gallery.styled';
 import { GalleryInfo, Card } from 'components';
 import { GelleryProps } from './Gallery.type';
-import { useAddCheckItem } from 'hook';
+import { useAddCheckItem, usePopup } from 'hook';
 const Gallery = ({
   items,
   modalOpenHandler,
@@ -10,6 +10,7 @@ const Gallery = ({
   deleteItem,
 }: GelleryProps): ReactElement => {
   const { checkItems, checkItemHandler } = useAddCheckItem();
+  const { cardPopupItem, cardPopupState, popUpHandler } = usePopup();
   return (
     <S.Wrapper>
       <GalleryInfo itemsLength={items.length} />
@@ -20,6 +21,9 @@ const Gallery = ({
               <Card
                 key={`item${item.id}`}
                 item={item}
+                cardPopupItem={cardPopupItem}
+                cardPopupState={cardPopupState}
+                popUpHandler={popUpHandler}
                 checkItems={checkItems}
                 deleteItem={deleteItem}
                 changeItemHandler={changeItemHandler}
@@ -29,6 +33,7 @@ const Gallery = ({
             );
           })}
       </S.CardWrapper>
+      {cardPopupState && <S.PopupOverlay onClick={() => popUpHandler(0)} />}
     </S.Wrapper>
   );
 };
