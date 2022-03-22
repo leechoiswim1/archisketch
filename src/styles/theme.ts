@@ -10,6 +10,8 @@ const colors = {
   buttonColor: '#f3f4f4',
   imageColor: '#fafafa',
   blue: '#499fb6',
+  backgroundHover: '#4b4f54b3',
+  buttonFont: '#4b4b4b',
 };
 
 const theme = {

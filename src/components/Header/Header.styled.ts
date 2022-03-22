@@ -36,14 +36,14 @@ export const Button = styled.button`
     float: right;
     font-size: 14px;
     font-weight: 500;
-    color: rgb(75, 75, 75);
+    color: ${({ theme }) => theme.colors.buttonFont};
     margin-left: 8px;
   }
 `;
 
 export const HeaderRight = styled.div`
   margin-right: 10px;
-  color: rgb(75, 75, 75);
+  color: ${({ theme }) => theme.colors.buttonFont};
   font-weight: 700;
   display: flex;
   align-items: center;
