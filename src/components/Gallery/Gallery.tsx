@@ -1,18 +1,24 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useCallback } from 'react';
 import * as S from './Gallery.styled';
 import { GalleryInfo, Card } from 'components';
 import { GelleryProps } from './Gallery.type';
 import { useAddCheckItem, usePopup } from 'hook';
-import { fileDownloadHandler } from 'utils/fileDownloadHandler';
+import fileDownloadHandler from 'utils/fileDownloadHandler';
 import { CardImage } from 'components/Card/Card.type';
 const Gallery = ({
   items,
+  setItems,
   modalOpenHandler,
   changeItemHandler,
   deleteItem,
 }: GelleryProps): ReactElement => {
   const { checkItems, checkItemHandler, checkAllItemsHandler } = useAddCheckItem();
   const { cardPopupItem, cardPopupState, popUpHandler } = usePopup();
+
+  const deleteAllItems = useCallback(() => {
+    const result = items.filter(item => !checkItems.includes(item.id));
+    setItems(result);
+  }, [checkItems]);
 
   const ItemCard = React.memo(({ item }: { item: CardImage }) => (
     <S.CardInner>
@@ -41,6 +47,7 @@ const Gallery = ({
         items={items}
         checkItems={checkItems}
         checkAllItemsHandler={checkAllItemsHandler}
+        deleteAllItems={deleteAllItems}
       />
       <S.CardWrapper>
         {items &&
