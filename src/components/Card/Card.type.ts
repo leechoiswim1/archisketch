@@ -4,7 +4,7 @@ export type CardImage = {
 };
 export type CardProps = {
   item: CardImage;
-  checkItems: number[];
+  checked: boolean;
   modalOpenHandler: () => void;
   changeItemHandler: (item: number) => void;
   checkItemHandler: (item: number) => void;

@@ -4,10 +4,9 @@ import { CardProps } from './Card.type';
 import CheckBox from 'components/CheckBox/CheckBox';
 import { moreHorizontal } from 'assets/icons';
 import { fileDownloadHandler } from 'utils/fileDownloadHandler';
-import { useCheckItem } from 'hook';
 
 const Card = ({
-  checkItems,
+  checked,
   item,
   modalOpenHandler,
   changeItemHandler,
@@ -18,7 +17,7 @@ const Card = ({
   popUpHandler,
 }: CardProps) => {
   const id = item.id;
-  const checked = useCheckItem({ checkItems, id });
+
   const [isMenu, setIsMenu] = useState(false);
 
   const cardClickHandler = useCallback(() => {
